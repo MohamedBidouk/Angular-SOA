@@ -1,0 +1,26 @@
+<div class="container">
+    <div>
+    <h2>Modify Employer :</h2>
+    </div>
+        <form >
+            <div hidden class="col-sm-2 col-md-2 col-lg-2">
+                <label >ID Employer</label>
+                <input readonly type="text" [(ngModel)]="currentEmployer.idEmployer" name="idEmployer" class="form-control">
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4" >
+                <label >Name Employer</label>
+                <input type="text"[(ngModel)]= "currentEmployer.nameEmployer"name="nameEmployer" class="form-control">
+            </div>
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                <label >salary Employer</label>
+                <input type="number" [(ngModel)]= "currentEmployer.salaryEmployer" name="salaryEmployer" class="form-control">
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                <label >Date Creation</label>
+                <input type="date" [ngModel]="currentEmployer.dateCreation | date: 'yyyy-MM-dd'" (ngModelChange)=" currentEmployer.dateCreation= $event" name="dateCreation" class="form-control">
+            </div>
+            <div class="mt-2">
+            <button type="submit" (click)="updateEmployer()" class="btn btn-success">Modifer</button>
+            </div>
+    </form>
+</div>
