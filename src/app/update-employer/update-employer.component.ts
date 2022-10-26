@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import { EmployerService } from '../services/employer.service';
 import { employer } from '../model/employer.model';
+import { Category } from '../model/Category.model';
 
 @Component({
   selector: 'app-update-employer',
@@ -10,6 +11,8 @@ import { employer } from '../model/employer.model';
   ]
 })
 export class UpdateEmployerComponent implements OnInit {
+  categorys! : Category[];
+  updatedCatId! : number;
 
   currentEmployer = new employer();
 
@@ -18,9 +21,10 @@ export class UpdateEmployerComponent implements OnInit {
               private employerService: EmployerService) { }
 
   ngOnInit(): void {
-    console.log(this.activatedRoute.snapshot.params['id']);
+
+    this.categorys = this.employerService.listCategorys();
     this.currentEmployer = this.employerService.consultEmployer(this.activatedRoute.snapshot.params['id']);
-    console.log(this.currentEmployer);
+    this.updatedCatId = this.currentEmployer.category.idCat;
     }
 
   updateEmployer(){

@@ -19,6 +19,14 @@
             <label >Creation Date</label>
             <input type="date" [(ngModel)]= "newEmployer.dateCreation" name="dateCreation" class="form-control">
         </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Category</label>
+            <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="newIdCat">
+                <option *ngFor="let cat of categorys" [value]="cat.idCat" >
+                    {{cat.nameCat}}
+                </option>
+            </select>
+        </div>
         <div class="mt-2">
             <button type="submit" (click)="addEmployer()"class="btn btn-success">Ajouter</button>
         </div>
