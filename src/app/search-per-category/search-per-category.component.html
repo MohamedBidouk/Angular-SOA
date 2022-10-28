@@ -1,6 +1,16 @@
 <div class="container">
+    <form class="form-inline">
+        <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+            <label>Categorys </label>
+            <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="idCategory" (change)="onChange()">
+                <option *ngFor="let cat of categorys" value="{{cat.idCat}}"> {{cat.nameCat}} </option>
+            </select>
+        </div>
+    </form>
     <div class="card shadow mb-4">
         <div class="card-body">
+            
+
             <table class="table table-striped">
                 <tr> <th>Id</th><th>Name</th> <th>Salary</th> <th>Creation Date</th> <th>Category</th> </tr>
                 <tbody *ngFor="let employer of employers">
@@ -9,9 +19,9 @@
                         <td>{{employer.nameEmployer}}</td>
                         <td>{{employer.salaryEmployer}}</td>
                         <td>{{employer.dateCreation | date:'dd/MM/yyyy'}}</td>
-                        <td>{{employer.category?.nameCat}}</td>
-                        <td><a class="btn btn-danger" (click)="deleteEmployer(employer)">Delete</a></td>
-                        <td><a class="btn btn-success" [routerLink]="['/update-employer',employer.idEmployer]">Modify</a></td>
+                        
+                        <!-- <td><a class="btn btn-danger" (click)="deleteEmployer(employer)">Delete</a></td>
+                        <td><a class="btn btn-success" [routerLink]="['/update-employer',employer.idEmployer]">Modify</a></td> -->
                     </tr>
                 </tbody>
             </table>

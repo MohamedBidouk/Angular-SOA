@@ -22,16 +22,21 @@ export class UpdateEmployerComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.categorys = this.employerService.listCategorys();
-    this.currentEmployer = this.employerService.consultEmployer(this.activatedRoute.snapshot.params['id']);
-    this.updatedCatId = this.currentEmployer.category.idCat;
+    this.employerService.listCategorys().subscribe(cats => {
+      this.categorys = cats._embedded.categorys;
+      console.log(cats);
+    });
+    this.employerService.consultEmployer(this.activatedRoute.snapshot.params['id']).subscribe( emp =>{ this.currentEmployer = emp; 
+      this.updatedCatId = this.currentEmployer.category.idCat;
+    } ) ;
+    
     }
 
   updateEmployer(){
-    this.employerService.updateEmployer(this.currentEmployer);
-    this.router.navigate(['employers']);
-
-
+    this.currentEmployer.category = this.categorys.find(cat => cat.idCat == this.updatedCatId)!;
+    this.employerService.updateEmployer(this.currentEmployer).subscribe(emp => {
+      this.router.navigate(['employers']);
+    });
   }
 
 }

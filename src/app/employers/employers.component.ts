@@ -16,15 +16,24 @@ export class EmployersComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.employers = this.employerService.listEmployers();
+    this.loadEmployers();
+  }
+
+  loadEmployers(){
+    this.employerService.listEmployers().subscribe(emps =>{
+      console.log(emps);
+      this.employers = emps;
+    });
   }
 
   deleteEmployer(e: employer)
   {
     let conf = confirm("Are you sure to delete "+e.nameEmployer +" ?");
     if (conf)
-      // console.log(e);
-      this.employerService.deleteEmployer(e);
+      this.employerService.deleteEmployer(e.idEmployer).subscribe(() =>{
+        console.log(e.nameEmployer +" deleted");
+        this.loadEmployers();
+      });
   }
 
 }

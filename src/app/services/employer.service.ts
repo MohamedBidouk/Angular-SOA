@@ -2,16 +2,23 @@ import { Injectable } from '@angular/core';
 
 import { employer } from '../model/employer.model';
 import { Category } from '../model/Category.model';
-
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CategoryWrapper } from '../model/CategoryWrapped.model';
+const HttpOptions = {
+  headers: new HttpHeaders( {'Content-Type': 'application/json'} )
+};
 @Injectable({
   providedIn: 'root'
 })
 export class EmployerService {
 
+  apiURL: string = 'http://localhost:8080/Employer1/api';
+  apiURLCat: string = 'http://localhost:8080/Employer1/cat';
   categorys: Category[];
   employers : employer[];
 
-  constructor() { 
+  constructor(private http : HttpClient) { 
     this.categorys = [ {idCat : 1, nameCat : "PC"},
       {idCat : 2, nameCat : "Imprimante"}];
 
@@ -26,39 +33,31 @@ export class EmployerService {
       
   }
 
-  listCategorys():Category[] {
-    return this.categorys;
+  listCategorys() : Observable<CategoryWrapper> {
+    return this.http.get<CategoryWrapper>(this.apiURLCat);
     }
 
     consultCategory(id:number): Category{
       return this.categorys.find(cat => cat.idCat == id)!;
       }
 
-  listEmployers():employer[] {
-    return this.employers;
+  listEmployers(): Observable<employer[]> {
+    return this.http.get<employer[]>(this.apiURL);
   }
 
-  addEmployer( emp : employer){
-    this.employers.push(emp);
+  addEmployer( emp : employer):Observable<employer>{
+    return this.http.post<employer>(this.apiURL, emp, HttpOptions);
   }
 
-  deleteEmployer( emp: employer){
-    //supprimer le produit prod du tableau produits
-    const index = this.employers.indexOf(emp, 0);
-    if (index > -1) {
-      this.employers.splice(index, 1);
-    }
-    //ou Bien
-    /* this.produits.forEach((cur, index) => {
-    if(prod.idEmployer === cur.idEmployer) {
-    this.produits.splice(index, 1);
-    }
-    }); */
+  deleteEmployer( id : number){
+    const url = `${this.apiURL}/${id}`;
+    return this.http.delete(url, HttpOptions);
     }
 
     
-    consultEmployer(id:number): employer{
-      return this.employers.find(e => e.idEmployer == id)!;
+    consultEmployer(id:number): Observable<employer>{
+      const url = `${this.apiURL}/${id}`;
+      return this.http.get<employer>(url);
       }
 
       sortEmployers(): void{
@@ -74,13 +73,20 @@ export class EmployerService {
       }
    
 
-      updateEmployer(e: employer){
+      updateEmployer(emp: employer) : Observable<employer>{
         // console.log(p);
-        this.deleteEmployer(e);
-        this.addEmployer(e);
-        this.sortEmployers();
+        return this.http.put<employer>(this.apiURL, emp, HttpOptions);
       }
 
-
+      searchPerCategory(idCat: number):Observable< employer[]> {
+        const url = `${this.apiURL}/empscat/${idCat}`;
+        return this.http.get<employer[]>(url);
+        }
+        
+        searchPerName(name: string):Observable< employer[]> {
+          const url = `${this.apiURL}/empsByName/${name}`;
+          return this.http.get<employer[]>(url);
+          }
+          
         
 }

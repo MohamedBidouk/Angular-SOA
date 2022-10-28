@@ -20,15 +20,18 @@ export class AddEmployerComponent implements OnInit {
               private router :Router) { }
 
   ngOnInit(): void {
-    this.categorys = this.employerService.listCategorys();
+    this.employerService.listCategorys().subscribe(cats => {
+      this.categorys = cats._embedded.categorys;
+      console.log(cats);
+    });
   }
 
   addEmployer(){
-    // console.log(this.newEmployer);
-    this.newCategory = this.employerService.consultCategory(this.newIdCat);
-    this.newEmployer.category = this.newCategory;
-    this.employerService.addEmployer(this.newEmployer);
-    this.router.navigate(['employers']);
+    this.newEmployer.category = this.categorys.find(cat => cat.idCat == this.newIdCat)!;
+    this.employerService.addEmployer(this.newEmployer).subscribe(emp =>{
+      console.log(emp);
+      this.router.navigate(['employers']);
+    });
   }
 
 }
