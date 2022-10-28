@@ -15,11 +15,9 @@
 
     <div class="card shadow mb-4">
         <div class="card-body">
-            
-
             <table class="table table-striped">
                 <tr> <th>Id</th><th>Name</th> <th>Salary</th> <th>Creation Date</th> <th>Category</th> </tr>
-                <tbody *ngFor="let employer of employers | searchFilter: searchTerm">
+                <tbody *ngFor="let employer of employers | filter:searchTerm">
                     <tr >
                         <td>{{employer.idEmployer}}</td>
                         <td>{{employer.nameEmployer}}</td>

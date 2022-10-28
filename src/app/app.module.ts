@@ -11,6 +11,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { SearchPerCategoryComponent } from './search-per-category/search-per-category.component';
 import { SearchPerNameComponent } from './search-per-name/search-per-name.component';
 import { SearchFilterPipe } from './search-filter.pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SearchFilterPipe } from './search-filter.pipe';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
