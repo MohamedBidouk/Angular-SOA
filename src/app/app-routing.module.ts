@@ -5,6 +5,7 @@ import { AddEmployerComponent } from './add-employer/add-employer.component';
 import { UpdateEmployerComponent } from './update-employer/update-employer.component';
 import { SearchPerCategoryComponent } from './search-per-category/search-per-category.component';
 import { SearchPerNameComponent } from './search-per-name/search-per-name.component';
+import { ListCategorysComponent } from './list-categorys/list-categorys.component';
 
 const routes: Routes = [
   {path: "employers", component : EmployersComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: "update-employer/:id", component: UpdateEmployerComponent},
   {path: "searchPerCategory", component: SearchPerCategoryComponent},
   {path: "searchPerName", component: SearchPerNameComponent},
+  {path: "listCategorys", component: ListCategorysComponent},
   {path: "", redirectTo: "employers", pathMatch: "full"}
 ];
 

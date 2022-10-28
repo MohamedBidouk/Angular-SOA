@@ -12,6 +12,7 @@ import { SearchPerCategoryComponent } from './search-per-category/search-per-cat
 import { SearchPerNameComponent } from './search-per-name/search-per-name.component';
 import { SearchFilterPipe } from './search-filter.pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ListCategorysComponent } from './list-categorys/list-categorys.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     UpdateEmployerComponent,
     SearchPerCategoryComponent,
     SearchPerNameComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    ListCategorysComponent
   ],
   imports: [
     BrowserModule,
