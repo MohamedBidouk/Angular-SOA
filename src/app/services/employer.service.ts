@@ -23,11 +23,11 @@ export class EmployerService {
       {idCat : 2, nameCat : "Imprimante"}];
 
     this.employers = [
-      { idEmployer : 1, nameEmployer : "Mohamed", salaryEmployer : 3000.600, dateCreation: new Date("01/14/2011"), 
+      { idEmployer : 1, nameEmployer : "Mohamed", salaryEmployer : 3000.600, dateRec: new Date("01/14/2011"), 
       category : {idCat : 1, nameCat : "PC"}},
-      { idEmployer : 2, nameEmployer : "Aissa", salaryEmployer : 450, dateCreation : new Date("12/17/2010"),
+      { idEmployer : 2, nameEmployer : "Aissa", salaryEmployer : 450, dateRec : new Date("12/17/2010"),
         category : {idCat : 1, nameCat : "PC"}},
-      { idEmployer : 3, nameEmployer :"Rayen", salaryEmployer : 900.123, dateCreation : new Date("02/20/2020"),
+      { idEmployer : 3, nameEmployer :"Rayen", salaryEmployer : 900.123, dateRec : new Date("02/20/2020"),
       category : {idCat : 2, nameCat : "Imprimante"}}
       ];
       

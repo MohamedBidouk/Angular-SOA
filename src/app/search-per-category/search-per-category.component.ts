@@ -20,7 +20,7 @@ export class SearchPerCategoryComponent implements OnInit {
   ngOnInit(): void {
     this.employerService.listCategorys().subscribe(cats => {
       this.categorys = cats._embedded.categorys;
-      console.log(cats);
+      console.log(this.categorys);
     });
   }
 

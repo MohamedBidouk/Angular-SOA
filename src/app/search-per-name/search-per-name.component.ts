@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Console } from 'console';
 import { employer } from '../model/employer.model';
 import { EmployerService } from '../services/employer.service';
 
@@ -10,18 +11,21 @@ import { EmployerService } from '../services/employer.service';
 })
 export class SearchPerNameComponent implements OnInit {
 
-  employers! : employer[];
+  allEmployers! : employer[];
+  employers!: employer[];
   nameEmployer! : string;
+  searchTerm!: string;
   
   constructor(private employerService : EmployerService) { }
 
   ngOnInit(): void {
+    this.employerService.listEmployers().subscribe(emps => {
+    this.allEmployers = emps;
+    });
   }
 
-  searchPerName(){
-    this.employerService.searchPerName(this.nameEmployer).
-    subscribe(emps => {
-    this.employers = emps;
-    console.log(emps)});
-    }
+  onKeyUp(filterText : string){
+    this.employers = this.allEmployers.filter(item => item.nameEmployer.toLowerCase().includes(filterText));
+  }
+  
 }

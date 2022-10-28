@@ -17,7 +17,7 @@
             </div>
             <div class="col-sm-4 col-md-4 col-lg-4">
                 <label >Date Creation</label>
-                <input type="date" [ngModel]="currentEmployer.dateCreation | date: 'yyyy-MM-dd'" (ngModelChange)=" currentEmployer.dateCreation= $event" name="dateCreation" class="form-control">
+                <input type="date" [ngModel]="currentEmployer.dateRec | date: 'yyyy-MM-dd'" (ngModelChange)=" currentEmployer.dateRec= $event" name="dateRec" class="form-control">
             </div>
             <div class="col-sm-4 col-md-4 col-lg-4">
                 <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="updatedCatId">

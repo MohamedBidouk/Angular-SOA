@@ -2,8 +2,8 @@ import { Category } from "./Category.model";
 
 export class employer {
     idEmployer! : number;
-    nameEmployer? : string;
+    nameEmployer! : string;
     salaryEmployer? : number;
-    dateCreation? : Date ;
+    dateRec? : Date ;
     category! : Category;
     }    

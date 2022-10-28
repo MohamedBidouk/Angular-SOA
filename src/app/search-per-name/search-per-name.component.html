@@ -1,9 +1,8 @@
 <div class="container">
     <form class="form-inline">
         <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
-            <label>Name Employer </label>
-            <input type="text" class="form-control" [(ngModel)]="nameEmployer" name="nameEmployer" class="form-control">
-            <button type="submit" (click)="searchPerName()" class="btn btn-primary mb-2 ml-2">Search</button>
+            <label>Name Employer On Key Up</label>
+            <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
         </div>
     </form>
     <div class="card shadow mb-4">
@@ -17,7 +16,7 @@
                         <td>{{employer.idEmployer}}</td>
                         <td>{{employer.nameEmployer}}</td>
                         <td>{{employer.salaryEmployer}}</td>
-                        <td>{{employer.dateCreation | date:'dd/MM/yyyy'}}</td>
+                        <td>{{employer.dateRec | date:'dd/MM/yyyy'}}</td>
                         
                         <!-- <td><a class="btn btn-danger" (click)="deleteEmployer(employer)">Delete</a></td>
                         <td><a class="btn btn-success" [routerLink]="['/update-employer',employer.idEmployer]">Modify</a></td> -->
