@@ -10,6 +10,7 @@ import { UpdateEmployerComponent } from './update-employer/update-employer.compo
 import { HttpClientModule} from '@angular/common/http';
 import { SearchPerCategoryComponent } from './search-per-category/search-per-category.component';
 import { SearchPerNameComponent } from './search-per-name/search-per-name.component';
+import { SearchFilterPipe } from './search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SearchPerNameComponent } from './search-per-name/search-per-name.compon
     AddEmployerComponent,
     UpdateEmployerComponent,
     SearchPerCategoryComponent,
-    SearchPerNameComponent
+    SearchPerNameComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,

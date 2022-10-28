@@ -20,7 +20,7 @@ export class SearchPerNameComponent implements OnInit {
 
   ngOnInit(): void {
     this.employerService.listEmployers().subscribe(emps => {
-    this.allEmployers = emps;
+    this.employers = emps;
     });
   }
 
