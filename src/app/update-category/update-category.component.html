@@ -1,0 +1,16 @@
+<form>
+    <div [hidden]="added">
+        <label>Category ID</label>
+        <input type="text" [(ngModel)]="category.idCat" name="idCategory" class="form-control w-25">
+    </div>
+    <div>
+        <label>Category Name</label>
+        <input type="text" [(ngModel)]="category.nameCat" name="nameCategory" class="form-control"
+        placeholder="Enter the name of Category...">
+    </div>
+    <div class="mt-2">
+        <button type="submit" [disabled]="!category.nameCat" class="btn btn-success"
+        (click)="saveCategory()" >{{added ? 'Add' : 'Modify'}}
+    </button>
+    </div>
+</form>

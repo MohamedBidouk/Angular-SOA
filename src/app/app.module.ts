@@ -13,6 +13,7 @@ import { SearchPerNameComponent } from './search-per-name/search-per-name.compon
 import { SearchFilterPipe } from './search-filter.pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ListCategorysComponent } from './list-categorys/list-categorys.component';
+import { UpdateCategoryComponent } from './update-category/update-category.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ListCategorysComponent } from './list-categorys/list-categorys.componen
     SearchPerCategoryComponent,
     SearchPerNameComponent,
     SearchFilterPipe,
-    ListCategorysComponent
+    ListCategorysComponent,
+    UpdateCategoryComponent
   ],
   imports: [
     BrowserModule,

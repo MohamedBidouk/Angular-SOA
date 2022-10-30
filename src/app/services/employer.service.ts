@@ -87,6 +87,11 @@ export class EmployerService {
           const url = `${this.apiURL}/empsByName/${name}`;
           return this.http.get<employer[]>(url);
           }
+
+          addCategory( cat: Category):Observable<Category>{
+            return this.http.post<Category>(this.apiURLCat, cat, HttpOptions);
+            }
+            
           
         
 }
