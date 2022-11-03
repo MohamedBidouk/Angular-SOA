@@ -13,12 +13,11 @@ export class EmployerGuard implements CanActivate {
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree { 
+    state: RouterStateSnapshot): boolean { 
       if (this.authService.isAdmin())
-
         return true;
       else{
-        this.router.navigate(['app-forbidden']);
+        this.router.navigate(['forbidden']);
         return false;
       }  
   }
